@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Post>
+
+@{
+    ViewData["Title"] = "🥥Posts🥥";
+}
+
+<div class="row m-t m-b-b">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3 shadow-a" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white rounded-top">
+                            <p class="card-text">
+                                <h5 class="card-title c-b">
+                                    @item.Name
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin") || User.IsInRole("User"))
+                                    {
+                                        <span style="padding: 5px;"></span>
+                                        <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square bi-black"></i></a>
+                                        <span style="padding: 5px;"></span>
+                                        <a class="text-white float-right" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash bi-black"></i></a>
+                                    }
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="@item.Image" width="100%" alt="@item.Name">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text post-comment">@Html.Raw(item.Comment)</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer ">
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary float-right m-b-s w-f" asp-action="Details" asp-route-id="@item.Id">
+                                    <i class="bi bi-search"></i> Show Details
+                                </a>
+                                <a class="btn btn-success text-white w-f m-b-ss like-button">Like ❤️</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@await Html.PartialAsync("_CreateItem", "Post")
+
+@section Scripts {
+
+    <script>$(document).ready(function () {
+            // Find all post comments containing hashtags
+            $('.post-comment').each(function () {
+                var comment = $(this).text();
+
+                // Regular expression to find hashtags
+                var hashtagRegex = /#(\w+)/g;
+
+                // Replace each hashtag with a link
+                var commentWithLinks = comment.replace(hashtagRegex, function (match, hashtag) {
+                    return '<a href="/Post/Filter?searchString=' + hashtag + '">' + match + '</a>';
+                });
+
+                // Update the post comment with the linkified version
+                $(this).html(commentWithLinks);
+            });
+        });</script>
+
+
+    <script>$(document).ready(function () {
+            $('.like-button').click(function () {
+                // Create the flying heart element
+                var heart = $('<i class="bi bi-heart-fill" style="position: absolute; font-size: 3rem; color: #e74c3c; transform: scale(0.5);"></i>');
+
+                // Add the heart element to the body
+                $('body').append(heart);
+
+                // Calculate the position of the heart element
+                var button = $(this);
+                var buttonPos = button.offset();
+                var buttonWidth = button.outerWidth();
+                var buttonHeight = button.outerHeight();
+                var heartPos = {
+                    top: buttonPos.top + buttonHeight / 2,
+                    left: buttonPos.left + buttonWidth / 2
+                };
+
+                // Animate the heart element
+                heart.css(heartPos);
+                heart.animate({
+                    top: '-=150',
+                    left: '-=75',
+                    opacity: 0,
+                    transform: 'scale(2) rotateZ(45deg)'
+                }, 1000, function () {
+                    // Remove the heart element when the animation is done
+                    heart.remove();
+                });
+            });
+        });</script>
+}
