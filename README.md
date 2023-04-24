@@ -44,7 +44,7 @@ Catstagram is a simple web application that allows users to share photos + comme
 🍙 (Admin Only) you can see all the registered users, from the dropdown menu.<br>
 🍙 View the Privacy Policy<br>
 
-## Credentials
+## 🍮 Credentials
 
 The credentials for the admin are:<br>
 
@@ -53,12 +53,12 @@ The credentials for the admin are:<br>
 
 `PS: I don't allow more than one "admin". If you register you will automatically be a "user". Cheers.`
 
-## T.L.D.R
+## 🍫 T.L.D.R
 
 🍊 <strong>Common operations</strong>: Create, Delete, Details, Display, Edit, Search, Filter<br>
 🍊 <strong>Account operations</strong>: Register, Login, Logout
 
-## Credits
+## 🍣 Credits
 
 This project was created by [Vladimir Wolfgang Schmadlak] for [Web Programming (Assignment)].
 
