@@ -30,7 +30,7 @@ Catstagram is a simple web application that allows users to share photos + comme
 🍇 Open the Package Manager Console and run the following command to create the database: `Update-Database`<br>
 🍇 Run the application.<br>
 
-## Usage
+## 🥥 Usage
 
 🍙 Register and Login to the application. (Don't worry, you can always logout + your data is safe) <3<br>
 🍙 Click on "Add New Cat Post" to add a new post.<br>
@@ -44,7 +44,7 @@ Catstagram is a simple web application that allows users to share photos + comme
 🍙 (Admin Only) you can see all the registered users, from the dropdown menu.<br>
 🍙 View the Privacy Policy<br>
 
-## 🍮 Credentials
+## 🍐 Credentials
 
 The credentials for the admin are:<br>
 
@@ -53,7 +53,7 @@ The credentials for the admin are:<br>
 
 `PS: I don't allow more than one "admin". If you register you will automatically be a "user". Cheers.`
 
-## 🍫 T.L.D.R
+## 🍎 T.L.D.R
 
 🍊 <strong>Common operations</strong>: Create, Delete, Details, Display, Edit, Search, Filter<br>
 🍊 <strong>Account operations</strong>: Register, Login, Logout
